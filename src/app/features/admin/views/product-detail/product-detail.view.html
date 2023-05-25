@@ -1,0 +1,92 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Información Producto Mercancia</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="productGroup" class="example-form" (ngSubmit)="send()">
+
+      <input type="hidden" class="form-control" id="idProducto" formControlName="idProducto" value="" />
+      <input type="hidden" class="form-control" id="idProductoMercancia" formControlName="idProductoMercancia" value="" />
+      <input type="hidden" class="form-control" id="idGenero" formControlName="idGenero" value="" />
+      <input type="hidden" class="form-control" id="idColor" formControlName="idColor" value="" />
+      <input type="hidden" class="form-control" id="idTalla" formControlName="idTalla" value="" />
+
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <input type="text" matInput [formControl]="nombreCategoriaFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Nombre Producto</mat-label>
+              <input type="text" matInput [formControl]="nombreProductoFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <p>
+        <mat-form-field class="full-width-field" appearance="outline">
+          <mat-label>Descripcion</mat-label>
+          <textarea type="text" matInput [formControl]="descripcionFormControl"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width-field" appearance="outline">
+          <mat-label>Ruta Imagen</mat-label>
+          <textarea type="text" matInput [formControl]="rutaImagenFormControl"></textarea>
+        </mat-form-field>
+      </p>
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Genero</mat-label>
+              <input type="text" matInput [formControl]="nombreGeneroFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Color</mat-label>
+              <input type="text" matInput [formControl]="nombreColorFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Talla</mat-label>
+              <input type="text" matInput [formControl]="nombreTallaFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Existencia</mat-label>
+              <input type="number" matInput [formControl]="existenciaFormControl" min="0">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Valor Costo</mat-label>
+              <input type="number" matInput [formControl]="valorCostoFormControl" min="0">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Valor Venta</mat-label>
+              <input type="number" matInput [formControl]="valorVentaFormControl" min="0">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-card-actions>
+        <button type="submit">Guardar</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+
+

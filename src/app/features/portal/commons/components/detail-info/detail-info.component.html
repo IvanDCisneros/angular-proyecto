@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup">
+  <h1>{{ productoMercanciaOriginal?.nombreProducto }}</h1>
+  <p class="description">
+    <strong>Descripción:</strong>
+    {{ productoMercanciaOriginal?.descripcion }}
+  </p>
+  <br><br>
+  <app-material-table *ngIf="this.mostrarControles" identifier="TablaMercancia" [tableContentMap]="tableContentMap"
+                      [dataSource]="listaProductoMercancia">
+  </app-material-table>
+  <br />
+  <div class="row">
+    <div class="col-md-3">
+      <div style="font-size: 12px;" *ngIf="this.mostrarCombos">
+        <mat-form-field appearance="outline">
+          <mat-label for="Generos">Genero</mat-label>
+          <mat-select id="idGeneros" class="form-control" formControlName="genero" (ngModelChange)="onSeleccionarPrecioYCantidad()">
+            <mat-option *ngFor="let item of generos let i = index" [value]="generos[i].idGenero">{{item.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label for="Tallas">Tallas</mat-label>
+          <mat-select id="idTallas" class="form-control" formControlName="talla" (ngModelChange)="onSeleccionarPrecioYCantidad()">
+            <mat-option *ngFor="let item of tallas let i = index" [value]="tallas[i].idTalla">{{item.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label for="Colores">Colores</mat-label>
+          <mat-select id="idColores" class="form-control" formControlName="color" (ngModelChange)="onSeleccionarPrecioYCantidad()">
+            <mat-option *ngFor="let item of colores let i = index" [value]="colores[i].idColor">{{item.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <p><span *ngIf="this.mostrarControles">Precio COP: {{ valorVenta | currency }}</span></p>
+  <p><span *ngIf="this.mostrarControles" class="quantity">{{ existencias > 0 ? 'Cantidad Disponibles: ' + existencias : 'Agotado' }}</span></p>
+  <mat-form-field *ngIf="this.mostrarControles">
+    <mat-label>Cantidad</mat-label>
+    <input matInput type="number" formControlName="quantity" min="0" value="0" max="{{ existencias }}">
+  </mat-form-field>
+  <button *ngIf="this.mostrarControles" mat-flat-button color="primary" (click)="addItem()">Añadir al Carrito</button>
+</form>

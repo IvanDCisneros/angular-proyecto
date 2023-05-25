@@ -1,0 +1,113 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Orden de Compra</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="facturaDeVenta" class="example-form">
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Número Orden</mat-label>
+              <input type="text" matInput [formControl]="numeroFacturaFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Fecha</mat-label>
+              <input type="text" matInput [formControl]="fechaFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Estado Orden</mat-label>
+              <input type="text" matInput [formControl]="nombreEstadoFacturaFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Identificación</mat-label>
+              <input type="text" matInput [formControl]="identificacionClienteFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input type="text" matInput [formControl]="nombreClienteFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Dirección</mat-label>
+              <input type="text" matInput [formControl]="direccionFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <input type="text" matInput [formControl]="ciudadFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Departamento</mat-label>
+              <input type="text" matInput [formControl]="departamentoFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Telefono</mat-label>
+              <input matInput type="tel" [formControl]="telefonoFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Correo Electronico</mat-label>
+              <input type="email" matInput [formControl]="correoElectronicoFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <div class="content">
+        <app-material-table identifier="TablaDetalle" [tableContentMap]="tableContentMap"
+                            [dataSource]="itemsFactura">
+        </app-material-table>
+      </div>
+      <br />
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Valor Total</mat-label>
+              <input matInput type="text" [formControl]="valorTotalFormControl" class="form-control">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="buttons-panel">
+              <div class="right">
+                <div class="btn-group">
+                  <button mat-raised-button class="conf-button" (click)="onClickPagar()">Pagar</button>
+                  <br />
+                  <br />
+                  <mat-label *ngIf=this.diferenteCiudad><strong>Nota: El pago del domicilio se efectua cuando reciba su producto en la dirección ingresada.</strong></mat-label>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      </form>
+  </mat-card-content>
+</mat-card>
+<!--<form action="https://checkout.wompi.co/p/" method="GET">-->
+  <!-- OBLIGATORIOS -->
+  <!--<input type="hidden" name="public-key" value="pub_test_X0zDA9xoKdePzhd8a0x9HAez7HgGO2fH" />
+  <input type="hidden" name="currency" value="COP" />
+  <input type="hidden" name="amount-in-cents" value="4950000" />
+  <input type="hidden" name="reference" value="4XMPGKWWPKWQ" />
+  <button type="submit" click="onClickPagar">Pagar con Wompi</button>
+</form>-->

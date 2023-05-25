@@ -1,0 +1,31 @@
+<form [formGroup]="formGroup" #form class="feature - form">
+  <p>
+    <strong>Reporte Orden de Compra:</strong>
+  </p>
+  <div class="row">
+    <div class="form-group col-md-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" formControlName="fechaInicio">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha Fin</mat-label>
+        <input matInput [matDatepicker]="pickerFin" formControlName="fechaFin">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <button mat-flat-button color="primary" (click)="consultarFacturas()">Consultar Ordenes</button>
+    </div>
+  </div>
+  <br><br>
+  <app-material-table *ngIf="this.mostrarControles" identifier="TablaFacturas" [tableContentMap]="tableContentMap"
+                      [dataSource]="listaFacturas" [actions]="['detail']" (detailClicked)="onClickDetail($event)">
+  </app-material-table>
+  <iframe *ngIf="this.mostrarReporte" [src]="reportUrl" width="100%" height="700px" allowfullscreen></iframe>
+</form>

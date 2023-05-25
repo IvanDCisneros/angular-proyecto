@@ -1,0 +1,132 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Crear Producto</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="productGroup" class="example-form" (ngSubmit)="send()">
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <mat-select [formControl]="idCategoriaFormControl">
+                <mat-option *ngFor="let item of categorias" [value]="item.idCategoria">
+                  {{item.nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="idCategoriaFormControl.hasError('required')">
+                La categoria es <strong>Requerida</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Nombre Producto</mat-label>
+              <input type="text" matInput [formControl]="nombreProductoFormControl">
+              <mat-error *ngIf="nombreProductoFormControl.hasError('required')">
+                El nombre del producto es <strong>Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        <mat-form-field class="full-width-field" appearance="outline">
+          <mat-label>Descripción Producto</mat-label>
+          <textarea type="text" matInput [formControl]="descripcionFormControl"></textarea>
+          <mat-error *ngIf="descripcionFormControl.hasError('required')">
+            La descripción del producto es <strong>Requerida</strong>
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width-field" appearance="outline">
+          <mat-label>Ruta Imagen</mat-label>
+          <textarea type="text" matInput [formControl]="rutaImagenFormControl"></textarea>
+          <mat-error *ngIf="rutaImagenFormControl.hasError('required')">
+            La ruta imagen es <strong>Requerida</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>
+      
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Genero</mat-label>
+              <mat-select [formControl]="idGeneroFormControl">
+                <mat-option *ngFor="let item of generos" [value]="item.idGenero">
+                  {{item.nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="idGeneroFormControl.hasError('required')">
+                El genero es <strong>Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Color</mat-label>
+              <mat-select [formControl]="idColorFormControl">
+                <mat-option *ngFor="let item of colores" [value]="item.idColor">
+                  {{item.nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="idColorFormControl.hasError('required')">
+                El color es <strong>Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Talla</mat-label>
+              <mat-select [formControl]="idTallaFormControl">
+                <mat-option *ngFor="let item of tallas" [value]="item.idTalla">
+                  {{item.nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="idTallaFormControl.hasError('required')">
+                La talla es <strong>Requerida</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Existencia</mat-label>
+              <input type="number" min="0" matInput [formControl]="existenciaFormControl">
+              <mat-error *ngIf="existenciaFormControl.hasError('required')">
+                La existencia del producto es <strong>Requerida</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Valor Costo</mat-label>
+              <input type="number" min="0" matInput [formControl]="valorCostoFormControl">
+              <mat-error *ngIf="valorCostoFormControl.hasError('required')">
+                El valor costo del producto es <strong>Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="outline">
+              <mat-label>Valor Venta</mat-label>
+              <input type="number" min="0" matInput [formControl]="valorVentaFormControl">
+              <mat-error *ngIf="valorVentaFormControl.hasError('required')">
+                El valor venta del producto es <strong>Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-card-actions>
+        <button type="submit" [disabled]="productGroup.invalid">Guardar</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,29 @@
+<form [formGroup]="formGroup" #form class="feature - form">
+  <p>
+    <strong>Listado de Productos:</strong>
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <div style="font-size: 12px;">
+        <mat-form-field appearance="outline">
+          <mat-label for="estados">Listado de Categorias</mat-label>
+          <mat-select id="idCategoria" class="form-control" formControlName="categorias">
+            <mat-option value="0" selected>Seleccionar Todos</mat-option>
+            <mat-option *ngFor="let item of categorias let i = index" [value]="categorias[i].idCategoria">{{item.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <button mat-flat-button color="accent" (click)="crearProducto()">Nuevo Producto</button>
+    </div>
+    <br />
+    <div class="row">
+      <button mat-flat-button color="primary" (click)="consultarProductos()">Consultar Productos</button>
+    </div>
+  </div>
+  <br><br>
+  <app-material-table *ngIf="this.mostrarControles" identifier="TablaProductos" [tableContentMap]="tableContentMap"
+                      [dataSource]="listaProductosMercancia" [actions]="['detail']" (detailClicked)="onClickDetail($event)">
+  </app-material-table>
+</form>

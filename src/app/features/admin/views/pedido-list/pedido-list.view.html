@@ -1,0 +1,41 @@
+<form [formGroup]="formGroup" #form class="feature - form">
+  <p>
+    <strong>Pedidos:</strong>
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <div style="font-size: 12px;">
+        <mat-form-field appearance="outline">
+          <mat-label for="estados">Estado Pedidos</mat-label>
+          <mat-select id="idEstadosPedidos" class="form-control" formControlName="estadoPedido">
+            <mat-option value="0" selected>Seleccionar Todos</mat-option>
+            <mat-option *ngFor="let item of estadoPedidos let i = index" [value]="estadoPedidos[i].idEstadoPedido">{{item.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" formControlName="fechaInicio">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha Fin</mat-label>
+        <input matInput [matDatepicker]="pickerFin" formControlName="fechaFin">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <button mat-flat-button color="primary" (click)="consultarPedidos()">Consultar Pedidos</button>
+    </div>
+  </div>
+  <br><br>
+  <app-material-table *ngIf="this.mostrarControles" identifier="TablaPedidos" [tableContentMap]="tableContentMap"
+                      [dataSource]="listaPedidos" [actions]="['detail']" (detailClicked)="onClickDetail($event)">
+  </app-material-table>
+</form>

@@ -1,0 +1,71 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Información Pedido</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="pedidoGroup" class="example-form" (ngSubmit)="send()">
+
+      <input type="hidden" class="form-control" id="idPedido" formControlName="idPedido" value="" />
+
+      <table class="full-width-field" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Fecha Registro</mat-label>
+              <input type="text" matInput [formControl]="fechaRegistroFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Número orden de compra</mat-label>
+              <input type="text" matInput [formControl]="numeroFacturaFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Identificación</mat-label>
+              <input type="text" matInput [formControl]="identificacionFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nombre Cliente</mat-label>
+              <input type="text" matInput [formControl]="nombreClienteFormControl" [readonly]="true">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Número Guía</mat-label>
+              <input type="text" matInput [formControl]="numeroGuiaFormControl" >
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Empresa de envio</mat-label>
+              <input type="text" matInput [formControl]="empresaEnvioFormControl">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Estado Pedido</mat-label>
+              <mat-select id="idEstadoPedido" class="form-control" formControlName="idEstadoPedido">
+                <mat-option *ngFor="let item of estadoPedidos let i = index" [value]="estadoPedidos[i].idEstadoPedido">{{item.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    <mat-card-actions>
+      <button type="submit">Guardar</button>
+    </mat-card-actions>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+

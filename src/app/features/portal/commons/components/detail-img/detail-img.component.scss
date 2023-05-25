@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  justify-content: center;
+  // outline: 1px solid red;
+  // *{
+  //     outline: 1px solid red;
+  // }
+  .content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-image img {
+    padding-top: 50px;
+    width: 250px;
+    height: 300px;
+  }
+
+  .slider-wrapper {
+    max-height: 400px;
+    width: 30%;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 20px;
+    margin-right: 5%;
+
+    .up, .down {
+      width: 40px;
+      height: 30px;
+    }
+  }
+
+  .slider {
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    height: 300px;
+    text-align: center;
+  }
+
+  .slider img {
+    width: 70px;
+    height: 90px;
+  }
+}

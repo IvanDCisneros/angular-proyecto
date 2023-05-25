@@ -1,0 +1,19 @@
+export class ProductoMercanciaModel {
+  idProductoMercancia: number = 0;
+  idProducto: number = 0;
+  nombreProducto: string = '';
+  descripcion: string = '';
+  idCategoria: number = 0;
+  nombreCategoria: string = '';
+  rutaImagen: string = '';
+  idGenero: number = 0;
+  nombreGenero: string = '';
+  idColor: number = 0;
+  nombreColor: string = '';
+  idTalla: number = 0;
+  nombreTalla: string = '';
+  existencia: number = 0;
+  valorCosto: number = 0;
+  valorVenta: number = 0;
+  idUsuario: string = '';
+}

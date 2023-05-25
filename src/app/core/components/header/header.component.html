@@ -1,0 +1,119 @@
+<mat-toolbar *ngIf="this.showNav" color="" class="header">
+  <h2 class="logo">
+    <img src="assets/img/LogoPequeño.png" alt="IdStore" class="logo">
+  </h2>
+  <div class="menu matcolorprimary">
+    <button mat-button (click)="redirectTo('home')">Inicio</button>
+    <button mat-button (click)="redirectTo('about')">Nosotros</button>
+    <button mat-button (click)="goToLogin()">Ingresar</button>
+    <button mat-button [matMenuTriggerFor]="reportMenu">Reportes</button>
+    <mat-menu #reportMenu="matMenu" yPosition="below">
+      <button mat-menu-item (click)="goToReporteFactura()">Reporte orden de compra</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="administracionMenu" *ngIf="IsAdmin">Administración</button>
+    <mat-menu #administracionMenu="matMenu" yPosition="below">
+      <button mat-menu-item (click)="goToPedido()">Pedido</button>
+      <button mat-menu-item (click)="goToProductos()">Productos</button>
+    </mat-menu>
+    <mat-icon matBadgeColor="warn" class="material-icons primary" (click)="redirectToNewTarget('play-list')">
+      radio
+    </mat-icon>
+    <mat-icon [matBadge]="badge" matBadgeColor="warn" class="material-icons primary" (click)="goToCart()">
+      shopping_cart
+    </mat-icon>
+  </div>
+</mat-toolbar>
+<div *ngIf="this.showNav" class="divi"></div>
+
+<!--<div *ngIf="!this.showNav" class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="header">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Mundo Índigo</h1>
+    <h2 class="logo2">
+      <img src="assets/img/LogoPequeño.png" alt="IdStore" class="logo">
+    </h2>
+    <div class="iconLeft">
+      <mat-icon matBadgeColor="warn" class="material-icons primary" (click)="redirectTo('play-list')">
+        radio
+      </mat-icon>&nbsp;&nbsp;
+      <mat-icon [matBadge]="badge" matBadgeColor="warn" class="material-icons primary" (click)="goToCart()">
+        shopping_cart
+      </mat-icon>
+    </div>
+  </mat-toolbar>
+  <div class="divi"></div>
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-icon-button (click)="redirectTo('home')">
+            <mat-icon>home</mat-icon>&nbsp;&nbsp;Inicio
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-icon-button (click)="redirectTo('about')">
+            <mat-icon>info</mat-icon>&nbsp;&nbsp;Nosotros
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-icon-button (click)="goToLogin()">
+            <mat-icon>login</mat-icon>&nbsp;&nbsp;Ingresar
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list>
+        <mat-accordion>
+          <mat-expansion-panel Style="box-shadow: none;">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <button mat-icon-button>
+                  <mat-icon>receipt</mat-icon>&nbsp;&nbsp;Reportes
+                </button>-->
+                <!--</div>-->
+              <!--</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list-item>
+              <button mat-icon-button (click)="goToReporteFactura()">
+                <mat-icon>description</mat-icon>&nbsp;&nbsp;Reporte orden de compra
+              </button>
+            </mat-list-item>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-nav-list>
+      <mat-nav-list *ngIf="IsAdmin">
+        <mat-accordion>
+          <mat-expansion-panel Style="box-shadow: none;">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <button mat-icon-button>
+                  <mat-icon>receipt</mat-icon>&nbsp;&nbsp;Administración
+                </button>-->
+                <!--</div>-->
+              <!--</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list-item>
+              <button mat-icon-button (click)="goToPedido()">
+                <mat-icon>commute</mat-icon>&nbsp;&nbsp;Pedidos
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-icon-button (click)="goToProductos()">
+                <mat-icon>ballot</mat-icon>&nbsp;&nbsp;Productos
+              </button>
+            </mat-list-item>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>-->
+      <!--<router-outlet></router-outlet>-->
+    <!--</mat-sidenav-content>
+  </mat-sidenav-container>
+</div>-->
+
+
+
+
+

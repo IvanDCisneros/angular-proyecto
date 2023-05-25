@@ -1,0 +1,51 @@
+<h1>Login para Administradores</h1>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <form [formGroup]="group" (ngSubmit)="send()">
+                  <div class="form-outline mb-4">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Usuario</mat-label>
+                      <input type="text" matInput [formControl]="usuarioFormControl"
+                             placeholder="Correo electrónico, identificación o codigo afiliado">
+                      <mat-error *ngIf="usuarioFormControl.hasError('required')">
+                        El usuario es <strong>Requerido</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Contraseña</mat-label>
+                      <input type="password" matInput [formControl]="passwordFormControl"
+                             placeholder="Contraseña">
+                      <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        El Password es <strong>Requerido</strong>
+                      </mat-error>
+                      <mat-error *ngIf="passwordFormControl.hasError('formatError')">
+                        {{passwordFormControl.getError('formatError')}}
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <button type="submit" [disabled]="group.invalid">Iniciar sesión</button>
+                    <!--<a class="text-muted" href="/auth/forgot-password">Olvido su contraseña?</a>-->
+                  </div>
+                  <br />
+                  <!--<div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2">Aun no tienes cuenta?</p>
+                    <button type="button" class="btn btn-outline-danger" (click)="goToSignUp()">Registrate aquí</button>
+                  </div>-->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

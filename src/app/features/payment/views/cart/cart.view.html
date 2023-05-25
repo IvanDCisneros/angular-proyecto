@@ -1,0 +1,30 @@
+<h1>Carrito de Compras</h1>
+<div class="container mat-drawer-container" *ngIf="!this.mostrarControles">
+  <label>Su carrito esta vacio, aún no ha adquirido ningun producto de Mundo Indigo</label>
+</div>
+<div class="content">
+  <app-material-table *ngIf="this.mostrarControles" identifier="TablaMercancia" [tableContentMap]="tableContentMap"
+                      [dataSource]="cart" [actions]="['add','remove']" (addClicked)="onClickAdd($event)" (removeClicked)="onClickRemove($event)">
+  </app-material-table>
+</div>
+<br />
+<br />
+<div class="subTotal" *ngIf="this.mostrarControles">
+  <!--<p>SubTotal COP: <span>{{getSubTotal() | currency}}</span></p>
+  <p>Total COP: <span>{{getTotal() | currency}}</span></p>-->
+  <p>Total COP: <span>{{getSubTotal() | currency}}</span></p>
+</div>
+<div class="buttons-panel">
+  <div class="right">
+    <div class="btn-group">
+      <button mat-raised-button class="conf-button" *ngIf="this.mostrarControles" (click)="onClickBuy()">Comprar</button>
+    </div>
+  </div>
+</div>
+<div class="suscripcion" *ngIf="!this.carritoConSuscripcion">
+  <mat-checkbox class="example-margin" (change)="obtenerValorSuscripcion($event)">Adquirir suscripción mensual</mat-checkbox>
+  <br />
+  <label *ngIf="this.mostrarControlesSuscripcion">{{ valorSuscripcion }}</label>
+  <br />
+  <button mat-raised-button class="conf-button" *ngIf="this.mostrarControlesSuscripcion" (click)="agregarSuscripcionAlCarrito()">Añadir suscripción mensual al Carrito</button>
+</div>

@@ -1,0 +1,10 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ categoryModel.nombre }} </mat-card-title>
+  </mat-card-header>
+  <div class="content-img">
+    <img mat-card-image src="{{categoryModel.rutaImagen}}" (click)="obtenerProductos()" alt="Sin foto">
+    <!--<img src="data:image/png;base64,{{categoryModel.imagen}}" (click)="obtenerProductos()" alt="Sin foto">-->
+  </div>
+</mat-card>

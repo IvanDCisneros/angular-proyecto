@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="slider-wrapper">
+    <img src="assets/img/flecha_arriba.png" alt="" class="up" (click)="up()">
+    <div class="slider" #slider>
+      <ng-container *ngFor="let item of productoImagenesModel">
+        <img [src]="item.rutaImagen" alt="" (click)="toogleImg(item.rutaImagen)">
+      </ng-container>
+    </div>
+    <img src="assets/img/flecha_abajo.png" alt="" class="down" (click)="down()">
+  </div>
+  <div class="main-image">
+    <img [src]="srcMain" alt="">
+  </div>
+</div>
+

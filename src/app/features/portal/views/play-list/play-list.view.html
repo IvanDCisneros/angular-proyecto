@@ -1,0 +1,64 @@
+<div class="player">
+  <div class="wrapper">
+    <div class="details">
+      <div class="now-playing">Musica Varios Idiomas</div>
+      <img class="track-art" mat-card-image src="{{this.rutaImagen}}">
+      <div class="track-name">{{this.nombreCancion}}</div>
+      <div class="track-artist">{{this.nombreArtista}}</div>
+      <div class="track-name">{{this.idiomaCancion}}</div>
+    </div>
+
+    <div class="slider-container">
+      <div class="current-time">{{currentTime}}</div>
+      <input type="range" min="0" max={{totalSong}} [value]="seek" class="seek-slider" #rangeCurrent (input)="setSeekTo(rangeCurrent.value)">
+      <div class="total-duration">{{duration}}</div>
+    </div>
+
+    <div class="slider-container">
+      <i class="fa fa-volume-down"></i>
+      <input type="range" min="0" max="100" value="50" class="volume-slider" #rangeVolume (input)="setVolume(rangeVolume.value)">
+      <i class="fa fa-volume-up"></i>
+    </div>
+
+    <div class="buttons">
+      <div class="random-track">
+        <mat-icon>shuffle</mat-icon>
+      </div>
+      <div class="prev-track">
+        <mat-icon (click)="previousSound()">skip_previous</mat-icon>
+      </div>
+      <div class="playPause-track">
+        <mat-icon *ngIf="!this.isPlaying" (click)="playPause()">play_circle_filled</mat-icon>
+        <mat-icon *ngIf="this.isPlaying" (click)="playPause()">pause_circle_filled</mat-icon>
+      </div>
+      <div class="next-track">
+        <mat-icon (click)="nextSound()">skip_next</mat-icon>
+      </div>
+      <div class="repeat-track">
+        <mat-icon>repeat</mat-icon>
+      </div>
+    </div>
+    <div class="slider-container">
+      <div class="combo">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select #teamDropdown [(value)]="seleccionados" multiple>
+            <mat-option *ngIf="this.seleccionarTodos" (click)="selectAll()" [value]="-1">Todos</mat-option>
+            <mat-option *ngIf="!this.seleccionarTodos" (click)="deselectAll()" [value]="-1">Todos</mat-option>
+            <mat-option *ngFor="let item of categorias" [value]="item.idCategoria" selected="item.estaActivo">
+              {{item.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="buscarPlayList()">Buscar</button>
+      </div>
+    </div>
+  </div>
+  <!-- <iframe
+  frameborder="0"
+  width="400"
+  height="200"
+  src="https://ia801504.us.archive.org/3/items/EdSheeranPerfectOfficialMusicVideoListenVid.com/Ed_Sheeran_-_Perfect_Official_Music_Video%5BListenVid.com%5D.mp3">
+</iframe> -->
+</div>
+
